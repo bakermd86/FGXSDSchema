@@ -1,0 +1,1248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+<xs:include schemaLocation="shared_defs.xsd"></xs:include>
+
+<!-- Pulled some types out for readability and inheritence  -->
+
+<xs:complexType name="ButtonState">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="color" type="xs:string" minOccurs="0" />
+    <xs:element name="font" type="xs:string" minOccurs="0" />
+    <xs:element name="frame" type="xs:string" minOccurs="0" />
+    <xs:element name="frameoffset" type="xs:string" minOccurs="0" />
+    <xs:element name="icon" type="xs:string" minOccurs="0" />
+    <xs:element name="offset" type="xs:string" minOccurs="0" />
+    <xs:element name="text" type="xs:string" minOccurs="0" />
+    <xs:element name="textres" type="xs:string" minOccurs="0" />
+    <xs:element name="tooltip" type="xs:string" minOccurs="0" />
+    <xs:element name="tooltipres" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="ButtonIcon">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="normal" type="xs:string" minOccurs="0" />
+    <xs:element name="pressed" type="xs:string" minOccurs="0" />
+    <xs:element name="hover" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="ChatState">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="position" type="xs:string" minOccurs="0" />
+    <xs:element name="speak" type="xs:string" minOccurs="0" />
+    <xs:element name="story" type="xs:string" minOccurs="0" />
+    <xs:element name="action" type="xs:string" minOccurs="0" />
+    <xs:element name="emote" type="xs:string" minOccurs="0" />
+    <xs:element name="ooc" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="EmptyFmtText">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="text" type="xs:string" minOccurs="0" />
+    <xs:element name="textres" type="xs:string" minOccurs="0" />
+    <xs:element name="hidereadonly" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="EmptyOtherText">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="text" type="xs:string" minOccurs="0" />
+    <xs:element name="gmtext" type="xs:string" minOccurs="0" />
+    <xs:element name="pctext" type="xs:string" minOccurs="0" />
+    <xs:element name="font" type="xs:string" minOccurs="0" />
+    <xs:element name="color" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="ImageDefault">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="gridtype" type="xs:string" minOccurs="0" />
+    <xs:element name="gridsize" type="xs:string" minOccurs="0" />
+    <xs:element name="gridoffset" type="xs:string" minOccurs="0" />
+    <xs:element name="snap" type="xs:string" minOccurs="0" />
+    <xs:element name="snapsquare" type="xs:string" minOccurs="0" />
+    <xs:element name="snaphex" type="xs:string" minOccurs="0" />
+    <xs:element name="drawingsize" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="TextDefault">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="text" type="xs:string" minOccurs="0" />
+    <xs:element name="textres" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="DescriptionType">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="text" type="xs:string" minOccurs="0" />
+    <xs:element name="textres" type="xs:string" minOccurs="0" />
+    <xs:element name="field" type="xs:string" minOccurs="0" />
+    <xs:element name="control" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="TargetType">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="name" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+<xs:complexType name="FilterType">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="control" type="xs:string" minOccurs="0" />
+    <xs:element name="field" type="xs:string" minOccurs="0" />
+    <xs:element name="casesensitive" type="xs:string" minOccurs="0" />
+  </xs:choice>
+</xs:complexType>
+
+<!-- Base windowcontrol def, inherited by all controls -->
+
+<xs:complexType name="WindowControlType">
+  <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:element name="bounds" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+    <xs:element name="backcolor" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+    <xs:element name="invisible" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+    <xs:element name="gmvisibleonly" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+    <xs:element name="disabled" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+    <xs:element name="readonly" type="xs:string" minOccurs="0" msdata:Ordinal="6" />
+    <xs:element name="gmeditonly" type="xs:string" minOccurs="0" msdata:Ordinal="7" />
+    <xs:element ref="anchored" minOccurs="0" maxOccurs="unbounded" />
+    <xs:element ref="frame" minOccurs="0" maxOccurs="unbounded" />
+    <xs:element name="droptypes" minOccurs="0" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="type" type="xs:string" minOccurs="0" />
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="stateframe" minOccurs="0" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="pressed" type="xs:string" minOccurs="0" />
+          <xs:element name="hover" type="xs:string" minOccurs="0" />
+          <xs:element name="drophilight" type="xs:string" minOccurs="0" />
+          <xs:element name="drophover" type="xs:string" minOccurs="0" />
+          <xs:element name="keyedit" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="name" type="xs:string" minOccurs="0" />
+                <xs:element name="offset" type="xs:string" minOccurs="0" />
+                <xs:element name="nobaseframe" type="xs:string" minOccurs="0" />
+                <xs:element name="hidereadonly" type="xs:string" minOccurs="0" />
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="tabtarget" minOccurs="0" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="next" type="xs:string" minOccurs="0" />
+          <xs:element name="prev" type="xs:string" minOccurs="0" />
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="cursor" minOccurs="0" maxOccurs="unbounded">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="hover" type="xs:string" minOccurs="0" />
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+    <xs:element ref="tooltip" minOccurs="0" maxOccurs="unbounded" />
+  </xs:choice>
+  <xs:attribute name="name" type="xs:string" />
+</xs:complexType>
+
+<!-- Intermediate typedefs that inherit windowcontrol and are inherited by controls. 
+  This is the only one that is documented as existing ATM. -->
+
+<xs:complexType name="TextBaseControlType">
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="multilinespacing" type="xs:string" minOccurs="0" />
+        <xs:element name="center" type="xs:string" minOccurs="0" />
+        <xs:element name="font" type="xs:string" minOccurs="0" />
+        <xs:element name="color" type="xs:string" minOccurs="0" />
+        <xs:element name="selectioncolor" type="xs:string" minOccurs="0" />
+        <xs:element name="underline" type="xs:string" minOccurs="0" />
+        <xs:element name="underlineoffset" type="xs:string" minOccurs="0" />
+        <xs:element name="controlline" type="xs:string" minOccurs="0" />
+        <xs:element name="controllineoffset" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<!-- Define complex types for all controls. Done this way to allow for <name>control and 
+  <name>field tags to share the same type -->
+
+<xs:complexType name="ButtonControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996644896/buttoncontrol
+    </xs:documentation>
+  </xs:annotation>
+  <!-- <xs:annotation>
+    <xs:documentation>&lt;p&gt;Button controls create buttons that respond to simple click events.
+      Buttons can be defined as simple graphical or textual buttons, or defined as multi-state buttons. Each state can have its own unique look.
+      The value of a button is a numerical value equal to zero (if simple button) or the state (if multi-state). For multi-state buttons, the order of the state definitions sets the value associated with the state, starting at zero.
+      &lt;/p&gt;
+      &lt;p&gt;
+      All tags for defining a single state button can be replaced by using a single state tag.
+      If at least one state tag is defined, then the icon tag will be ignored.
+      If both an icon and text are defined for a given state, then only the icon will be displayed.
+      If a tooltip is specified for the first state, it will be used for all states unless overridden.
+      &lt;/p&gt;
+    </xs:documentation>
+  </xs:annotation> -->
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="allowdoubleclick" type="xs:string" minOccurs="0" />
+        <xs:element name="color" type="xs:string" minOccurs="0" />
+        <xs:element name="font" type="xs:string" minOccurs="0" />
+        <xs:element name="hover" type="xs:string" minOccurs="0" />
+        <xs:element name="pressed" type="xs:string" minOccurs="0" />
+        <xs:element name="text" type="xs:string" minOccurs="0" />
+        <xs:element name="textres" type="xs:string" minOccurs="0" />
+        <xs:element name="icon" type="ButtonIcon" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="state" type="ButtonState" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ChatEntryType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996644963/chatentry
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="TextBaseControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="chatwindow" type="xs:string" minOccurs="0" />
+        <xs:element name="state" type="ChatState" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ChatWindowType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996644944/chatwindow
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="modeframe" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="mode" type="xs:string" minOccurs="0" />
+              <xs:element name="name" type="xs:string" minOccurs="0" />
+              <xs:element name="offset" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="DieControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996644995/diecontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="noreset" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="FormattedTextType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645025/formattedtextcontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="footer" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="selectioncolor" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+        <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="normal" type="xs:string" minOccurs="0" />
+              <xs:element name="bold" type="xs:string" minOccurs="0" />
+              <xs:element name="italic" type="xs:string" minOccurs="0" />
+              <xs:element name="bolditalic" type="xs:string" minOccurs="0" />
+              <xs:element name="title" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="icon" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="linkicon" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="link" type="xs:string" minOccurs="0" />
+              <xs:element name="emptylink" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="empty" type="EmptyFmtText" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="GenericControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645055/genericcontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="icon" type="xs:string" minOccurs="0" />
+        <xs:element name="iconcolor" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ImageControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645070/imagecontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="indicators" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="availability" type="xs:string" minOccurs="0" />
+              <xs:element name="locked" type="xs:string" minOccurs="0" />
+              <xs:element name="zoom" type="xs:string" minOccurs="0" />
+              <xs:element name="shortcuts" type="xs:string" minOccurs="0" />
+              <xs:element name="loading" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="shortcut" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="icon" type="xs:string" minOccurs="0" />
+              <xs:element name="hotspot" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="default" type="ImageDefault" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="pointertypes" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="arrow" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="label" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="circle" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="label" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="rectangle" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="label" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="cone" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="label" type="xs:string" minOccurs="0" />
+                    <xs:element name="angle" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="custom" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="label" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="NumberControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645091/numbercontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="min" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+        <xs:element name="max" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="default" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+        <xs:element name="nodrag" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+        <xs:element name="nodrop" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+        <xs:element name="noreset" type="xs:string" minOccurs="0" msdata:Ordinal="6" />
+        <xs:element name="displaysign" type="xs:string" minOccurs="0" msdata:Ordinal="7" />
+        <xs:element name="hideonvalue" type="xs:string" minOccurs="0" msdata:Ordinal="8" />
+        <xs:element name="font" type="xs:string" minOccurs="0" msdata:Ordinal="9" />
+        <xs:element name="color" type="xs:string" minOccurs="0" msdata:Ordinal="10" />
+        <xs:element name="delaykeyupdate" type="xs:string" minOccurs="0" msdata:Ordinal="11" />
+        <xs:element name="nokeyedit" type="xs:string" minOccurs="0" msdata:Ordinal="12" />
+        <xs:element name="description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="PortraitSelectionControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645123/portraitselectioncontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="base" type="xs:string" minOccurs="0" />
+        <xs:element name="mask" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ScrollbarControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645136/scrollbarcontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="target" type="TargetType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="normal" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="name" type="xs:string" minOccurs="0" />
+              <xs:element name="offset" type="xs:string" minOccurs="0" />
+              <xs:element name="minimum" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="height" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pressed" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="name" type="xs:string" minOccurs="0" />
+              <xs:element name="offset" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ScrollerControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645149/scrollercontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="target" type="TargetType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="button" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="normal" type="xs:string" minOccurs="0" />
+              <xs:element name="pressed" type="xs:string" minOccurs="0" />
+              <xs:element name="zoom" type="xs:string" minOccurs="0" />
+              <xs:element name="zoompressed" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="StringControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645166/stringcontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="TextBaseControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="readonly" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="nodrag" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+        <xs:element name="nodrop" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+        <xs:element name="nodragselect" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+        <xs:element name="delaykeyupdate" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+        <xs:element name="default" type="TextDefault" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="static" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="text" type="xs:string" minOccurs="0" />
+              <xs:element name="textres" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="empty" type="EmptyFmtText" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="SubwindowType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645196/subwindow
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="class" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+        <xs:element name="noscroll" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="activate" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+        <xs:element name="fastinit" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="TokenBagType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645213/tokenbag
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tokenarea" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+        <xs:element name="bagbar" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="rect" type="xs:string" minOccurs="0" />
+              <xs:element name="frame" type="xs:string" minOccurs="0" />
+              <xs:element name="slotsize" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="bag" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="icon" type="xs:string" minOccurs="0" />
+              <xs:element name="shared" type="xs:string" minOccurs="0" />
+              <xs:element name="top" type="xs:string" minOccurs="0" />
+              <xs:element name="up" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="grid" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="width" type="xs:string" minOccurs="0" />
+              <xs:element name="height" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="filter" type="FilterType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="TokenControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645226/tokencontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="empty" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+        <xs:element name="nodrag" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="nodrop" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="WindowlistType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645260/windowlist
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="class" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+        <xs:element name="datasource" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="allowcreate" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+        <xs:element name="allowdelete" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+        <xs:element name="noscroll" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+        <xs:element name="useallmodules" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+        <xs:element name="footer" type="xs:string" minOccurs="0" msdata:Ordinal="7" />
+        <xs:element name="ownedonly" type="xs:string" minOccurs="0" msdata:Ordinal="8" />
+        <xs:element name="acceptdrop" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="class" type="xs:string" minOccurs="0" />
+              <xs:element name="field" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="columns" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="width" type="xs:string" minOccurs="0" />
+              <xs:element name="filldown" type="xs:string" minOccurs="0" />
+              <xs:element name="fillwidth" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="child" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="backcolor" type="xs:string" minOccurs="0" />
+              <xs:element name="frame" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="offset" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sortby" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="control" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+              <xs:element name="field" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+            </xs:choice>
+            <xs:attribute name="desc" type="xs:string" />
+            <xs:attribute name="case" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="filter" type="FilterType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="filteron" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="control" type="xs:string" minOccurs="0" />
+              <xs:element name="field" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="empty" type="EmptyOtherText" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="WindowReferenceControlType">
+  <xs:annotation>
+    <xs:documentation>
+      https://fantasygroundsunity.atlassian.net/wiki/spaces/FGCP/pages/996645279/windowreferencecontrol
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexContent>
+    <xs:extension base="WindowControlType">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="noreset" type="xs:string" minOccurs="0" />
+        <xs:element name="nodrag" type="xs:string" minOccurs="0" />
+        <xs:element name="allowdrop" type="xs:string" minOccurs="0" />
+        <xs:element name="closetoggle" type="xs:string" minOccurs="0" />
+        <xs:element ref="icon" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="description" type="DescriptionType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="class" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="recordname" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:group name="WindowControlsGroup">
+  <xs:choice>
+    <xs:element name="buttoncontrol" type="ButtonControlType" minOccurs="0"/>
+    <xs:element name="buttonfield" type="ButtonControlType" minOccurs="0"/>
+    <xs:element name="chatentry" type="ChatEntryType" minOccurs="0"/>
+    <xs:element name="chatwindow" type="ChatWindowType" minOccurs="0"/>
+    <xs:element name="diecontrol" type="DieControlType" minOccurs="0"/>
+    <xs:element name="diefield" type="DieControlType" minOccurs="0"/>
+    <xs:element name="formattedtextcontrol" type="FormattedTextType" minOccurs="0"/>
+    <xs:element name="formattedtextfield" type="FormattedTextType" minOccurs="0"/>
+    <xs:element name="genericcontrol" type="GenericControlType" minOccurs="0"/>
+    <xs:element name="imagecontrol" type="ImageControlType" minOccurs="0"/>
+    <xs:element name="numbercontrol" type="NumberControlType" minOccurs="0"/>
+    <xs:element name="numberfield" type="NumberControlType" minOccurs="0"/>
+    <xs:element name="portraitselectioncontrol" type="PortraitSelectionControlType" minOccurs="0"/>
+    <xs:element name="scrollbarcontrol" type="ScrollbarControlType" minOccurs="0"/>
+    <xs:element name="scrollercontrol" type="ScrollerControlType" minOccurs="0"/>
+    <xs:element name="stringcontrol" type="StringControlType" minOccurs="0"/>
+    <xs:element name="stringfield" type="StringControlType" minOccurs="0"/>
+    <xs:element name="subwindow" type="SubwindowType" minOccurs="0"/>
+    <xs:element name="tokenbag" type="TokenBagType" minOccurs="0"/>
+    <xs:element name="tokencontrol" type="TokenControlType" minOccurs="0"/>
+    <xs:element name="tokenfield" type="TokenControlType" minOccurs="0"/>
+    <xs:element name="windowlist" type="WindowlistType" minOccurs="0"/>
+    <xs:element name="windowreferencecontrol" type="WindowReferenceControlType" minOccurs="0"/>
+    <xs:element name="windowreferencefield" type="WindowReferenceControlType" minOccurs="0"/>
+  </xs:choice>
+</xs:group>
+
+<!-- <xs:complexType name="WindowClassType">
+</xs:complexType> -->
+
+  <!-- <xs:element name="icon">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="normal" type="xs:string" minOccurs="0" />
+        <xs:element name="pressed" type="xs:string" minOccurs="0" />
+        <xs:element name="hover" type="xs:string" minOccurs="0" />
+        <xs:element name="link" type="xs:string" minOccurs="0" />
+        <xs:element name="emptylink" type="xs:string" minOccurs="0" />
+        <xs:element name="chat" type="xs:string" minOccurs="0" />
+        <xs:element name="empty" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="empty">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="text" type="xs:string" minOccurs="0" />
+        <xs:element name="textres" type="xs:string" minOccurs="0" />
+        <xs:element name="hidereadonly" type="xs:string" minOccurs="0" />
+        <xs:element name="gmtext" type="xs:string" minOccurs="0" />
+        <xs:element name="pctext" type="xs:string" minOccurs="0" />
+        <xs:element name="font" type="xs:string" minOccurs="0" />
+        <xs:element name="color" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="default">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="gridtype" type="xs:string" minOccurs="0" />
+        <xs:element name="gridsize" type="xs:string" minOccurs="0" />
+        <xs:element name="gridoffset" type="xs:string" minOccurs="0" />
+        <xs:element name="snap" type="xs:string" minOccurs="0" />
+        <xs:element name="snapsquare" type="xs:string" minOccurs="0" />
+        <xs:element name="snaphex" type="xs:string" minOccurs="0" />
+        <xs:element name="drawingsize" type="xs:string" minOccurs="0" />
+        <xs:element name="text" type="xs:string" minOccurs="0" />
+        <xs:element name="textres" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="text" type="xs:string" minOccurs="0" />
+        <xs:element name="textres" type="xs:string" minOccurs="0" />
+        <xs:element name="field" type="xs:string" minOccurs="0" />
+        <xs:element name="control" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="target">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="name" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filter">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="control" type="xs:string" minOccurs="0" />
+        <xs:element name="field" type="xs:string" minOccurs="0" />
+        <xs:element name="casesensitive" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="textbasecontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="multilinespacing" type="xs:string" minOccurs="0" />
+              <xs:element name="center" type="xs:string" minOccurs="0" />
+              <xs:element name="font" type="xs:string" minOccurs="0" />
+              <xs:element name="color" type="xs:string" minOccurs="0" />
+              <xs:element name="selectioncolor" type="xs:string" minOccurs="0" />
+              <xs:element name="underline" type="xs:string" minOccurs="0" />
+              <xs:element name="underlineoffset" type="xs:string" minOccurs="0" />
+              <xs:element name="controlline" type="xs:string" minOccurs="0" />
+              <xs:element name="controllineoffset" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="chatentry" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="chatwindow" type="xs:string" minOccurs="0" />
+              <xs:element ref="state" minOccurs="0" maxOccurs="unbounded" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="chatwindow" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="modeframe" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="mode" type="xs:string" minOccurs="0" />
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="offset" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="diecontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="noreset" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="formattedtextcontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="footer" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+              <xs:element name="selectioncolor" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+              <xs:element name="font" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="normal" type="xs:string" minOccurs="0" />
+                    <xs:element name="bold" type="xs:string" minOccurs="0" />
+                    <xs:element name="italic" type="xs:string" minOccurs="0" />
+                    <xs:element name="bolditalic" type="xs:string" minOccurs="0" />
+                    <xs:element name="title" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="icon" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="linkicon" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="link" type="xs:string" minOccurs="0" />
+                    <xs:element name="emptylink" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="empty" minOccurs="0" maxOccurs="unbounded" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="genericcontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="icon" type="xs:string" minOccurs="0" />
+              <xs:element name="iconcolor" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="imagecontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="indicators" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="availability" type="xs:string" minOccurs="0" />
+                    <xs:element name="locked" type="xs:string" minOccurs="0" />
+                    <xs:element name="zoom" type="xs:string" minOccurs="0" />
+                    <xs:element name="shortcuts" type="xs:string" minOccurs="0" />
+                    <xs:element name="loading" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="shortcut" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="hotspot" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="default" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="pointertypes" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="arrow" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="icon" type="xs:string" minOccurs="0" />
+                          <xs:element name="label" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="circle" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="icon" type="xs:string" minOccurs="0" />
+                          <xs:element name="label" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="rectangle" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="icon" type="xs:string" minOccurs="0" />
+                          <xs:element name="label" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="cone" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="icon" type="xs:string" minOccurs="0" />
+                          <xs:element name="label" type="xs:string" minOccurs="0" />
+                          <xs:element name="angle" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="custom" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="name" type="xs:string" minOccurs="0" />
+                          <xs:element name="icon" type="xs:string" minOccurs="0" />
+                          <xs:element name="label" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="numbercontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="min" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+              <xs:element name="max" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+              <xs:element name="default" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+              <xs:element name="nodrag" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+              <xs:element name="nodrop" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+              <xs:element name="noreset" type="xs:string" minOccurs="0" msdata:Ordinal="6" />
+              <xs:element name="displaysign" type="xs:string" minOccurs="0" msdata:Ordinal="7" />
+              <xs:element name="hideonvalue" type="xs:string" minOccurs="0" msdata:Ordinal="8" />
+              <xs:element name="font" type="xs:string" minOccurs="0" msdata:Ordinal="9" />
+              <xs:element name="color" type="xs:string" minOccurs="0" msdata:Ordinal="10" />
+              <xs:element name="delaykeyupdate" type="xs:string" minOccurs="0" msdata:Ordinal="11" />
+              <xs:element name="nokeyedit" type="xs:string" minOccurs="0" msdata:Ordinal="12" />
+              <xs:element ref="description" minOccurs="0" maxOccurs="unbounded" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="portraitselectioncontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="base" type="xs:string" minOccurs="0" />
+              <xs:element name="mask" type="xs:string" minOccurs="0" />
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="scrollbarcontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="target" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="normal" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="offset" type="xs:string" minOccurs="0" />
+                    <xs:element name="minimum" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="height" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pressed" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="offset" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="scrollercontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="target" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="button" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="normal" type="xs:string" minOccurs="0" />
+                    <xs:element name="pressed" type="xs:string" minOccurs="0" />
+                    <xs:element name="zoom" type="xs:string" minOccurs="0" />
+                    <xs:element name="zoompressed" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="stringcontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="readonly" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+              <xs:element name="nodrag" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+              <xs:element name="nodrop" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+              <xs:element name="nodragselect" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+              <xs:element name="delaykeyupdate" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+              <xs:element ref="default" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="static" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="text" type="xs:string" minOccurs="0" />
+                    <xs:element name="textres" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="empty" minOccurs="0" maxOccurs="unbounded" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="subwindow" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="class" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+              <xs:element name="noscroll" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+              <xs:element name="activate" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+              <xs:element name="fastinit" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tokenbag" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="tokenarea" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+              <xs:element name="bagbar" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="rect" type="xs:string" minOccurs="0" />
+                    <xs:element name="frame" type="xs:string" minOccurs="0" />
+                    <xs:element name="slotsize" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="bag" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="icon" type="xs:string" minOccurs="0" />
+                    <xs:element name="shared" type="xs:string" minOccurs="0" />
+                    <xs:element name="top" type="xs:string" minOccurs="0" />
+                    <xs:element name="up" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="grid" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="width" type="xs:string" minOccurs="0" />
+                    <xs:element name="height" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="filter" minOccurs="0" maxOccurs="unbounded" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tokencontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="empty" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+              <xs:element name="nodrag" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+              <xs:element name="nodrop" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="windowlist" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="class" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+              <xs:element name="datasource" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+              <xs:element name="allowcreate" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+              <xs:element name="allowdelete" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+              <xs:element name="noscroll" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
+              <xs:element name="useallmodules" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+              <xs:element name="footer" type="xs:string" minOccurs="0" msdata:Ordinal="7" />
+              <xs:element name="ownedonly" type="xs:string" minOccurs="0" msdata:Ordinal="8" />
+              <xs:element name="acceptdrop" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="class" type="xs:string" minOccurs="0" />
+                    <xs:element name="field" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="columns" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="width" type="xs:string" minOccurs="0" />
+                    <xs:element name="filldown" type="xs:string" minOccurs="0" />
+                    <xs:element name="fillwidth" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="child" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="backcolor" type="xs:string" minOccurs="0" />
+                    <xs:element name="frame" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                          <xs:element name="name" type="xs:string" minOccurs="0" />
+                          <xs:element name="offset" type="xs:string" minOccurs="0" />
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="sortby" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="control" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                    <xs:element name="field" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+                  </xs:choice>
+                  <xs:attribute name="desc" type="xs:string" />
+                  <xs:attribute name="case" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="filter" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="filteron" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="control" type="xs:string" minOccurs="0" />
+                    <xs:element name="field" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="empty" minOccurs="0" maxOccurs="unbounded" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="windowreferencecontrol" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="noreset" type="xs:string" minOccurs="0" />
+              <xs:element name="nodrag" type="xs:string" minOccurs="0" />
+              <xs:element name="allowdrop" type="xs:string" minOccurs="0" />
+              <xs:element name="closetoggle" type="xs:string" minOccurs="0" />
+              <xs:element ref="icon" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element ref="description" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="class" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="recordname" type="xs:string" minOccurs="0" />
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="buttonfield" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:complexContent>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="diefield" type="xs:string" minOccurs="0" />
+        <xs:element name="formattedtextfield" type="xs:string" minOccurs="0" />
+        <xs:element name="numberfield" type="xs:string" minOccurs="0" />
+        <xs:element name="stringfield" type="xs:string" minOccurs="0" />
+        <xs:element name="tokenfield" type="xs:string" minOccurs="0" />
+        <xs:element name="windowreferencefield" type="xs:string" minOccurs="0" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element> -->
+  <!-- <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="icon" />
+        <xs:element ref="state" />
+        <xs:element ref="empty" />
+        <xs:element ref="default" />
+        <xs:element ref="description" />
+        <xs:element ref="target" />
+        <xs:element ref="filter" />
+        <xs:element ref="root" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element> -->
+</xs:schema>
